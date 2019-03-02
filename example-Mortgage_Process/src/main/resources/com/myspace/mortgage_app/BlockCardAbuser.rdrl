@@ -1,0 +1,12 @@
+package com.myspace.mortgage_app;
+
+import java.lang.Number;
+
+rule "BlockCardAbuser"
+	ruleflow-group "blockcardabuser"
+	dialect "mvel"
+	when
+		app : Application( applicant.noOfCCards >= 10 )
+	then
+		app.setMortgageamount( 0 );
+end
